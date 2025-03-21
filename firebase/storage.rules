@@ -1,0 +1,48 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    // Default deny all
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+    
+    // User images (profile pictures)
+    match /user_images/{userId}/{imageType} {
+      // Anyone can read public user images
+      allow read: if true;
+      
+      // Only the user can upload their own images
+      allow write: if request.auth != null && request.auth.uid == userId &&
+                     request.resource.size < 5 * 1024 * 1024 && // 5MB max
+                     request.resource.contentType.matches('image/.*');
+    }
+    
+    // Exploration media (images, videos, audio for exploration journeys)
+    match /explorations/{userId}/{explorationId}/{mediaType} {
+      // Only participants can view exploration media
+      allow read: if request.auth != null && (
+                   request.auth.uid == userId || 
+                   isExplorationParticipant(userId, explorationId)
+                  );
+      
+      // Only participants can upload media to their explorations
+      allow write: if request.auth != null && (
+                    request.auth.uid == userId ||
+                    isExplorationParticipant(userId, explorationId)
+                   ) &&
+                   request.resource.size < 20 * 1024 * 1024 && // 20MB max
+                   (
+                     request.resource.contentType.matches('image/.*') ||
+                     request.resource.contentType.matches('video/.*') ||
+                     request.resource.contentType.matches('audio/.*')
+                   );
+    }
+    
+    // Helper functions
+    function isExplorationParticipant(userId, explorationId) {
+      // Check if the user is a participant in the exploration
+      let db = firestore.get(/databases/(default)/documents/explorations/$(explorationId));
+      return db != null && db.data.participants.hasAny([request.auth.uid]);
+    }
+  }
+}
