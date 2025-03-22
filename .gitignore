@@ -94,3 +94,5 @@ ios/Runner/GoogleService-Info.plist
 # System files
 .DS_Store
 Thumbs.db
+diagnostics/network_log.har
+diagnostics/network_log.json
