@@ -1,0 +1,12 @@
+{
+  "name": "soultypes-diagnostics",
+  "version": "1.0.0",
+  "description": "Diagnostics tools for Soultypes app",
+  "main": "capture_all.js",
+  "scripts": {
+    "test": "node capture_all.js"
+  },
+  "dependencies": {
+    "puppeteer": "^21.0.0"
+  }
+}

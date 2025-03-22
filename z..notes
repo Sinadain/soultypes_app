@@ -1,0 +1,10 @@
+flutter run -d chrome --web-port 8888 2>&1 | tee z.flutter.run.txt
+./z.diagnostics.sh
+
+chmod +x z.diagnostics.sh
+
+// TODO: Fix BuildContext usage across async gaps by:
+// 1. Extract UI operations (SnackBar, Navigation) into helper methods in the State class
+// 2. Add 'if (!mounted) return;' checks after every async operation
+// 3. Replace direct context usage after async operations with calls to helper methods
+// 4. Use proper try/catch blocks around async operations

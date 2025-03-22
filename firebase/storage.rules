@@ -5,26 +5,26 @@ service firebase.storage {
     match /{allPaths=**} {
       allow read, write: if false;
     }
-    
+
     // User images (profile pictures)
     match /user_images/{userId}/{imageType} {
       // Anyone can read public user images
       allow read: if true;
-      
+
       // Only the user can upload their own images
       allow write: if request.auth != null && request.auth.uid == userId &&
-                     request.resource.size < 5 * 1024 * 1024 && // 5MB max
-                     request.resource.contentType.matches('image/.*');
+                   request.resource.size < 5 * 1024 * 1024 && // 5MB max
+                   request.resource.contentType.matches('image/.*');
     }
-    
+
     // Exploration media (images, videos, audio for exploration journeys)
     match /explorations/{userId}/{explorationId}/{mediaType} {
       // Only participants can view exploration media
       allow read: if request.auth != null && (
-                   request.auth.uid == userId || 
+                   request.auth.uid == userId ||
                    isExplorationParticipant(userId, explorationId)
                   );
-      
+
       // Only participants can upload media to their explorations
       allow write: if request.auth != null && (
                     request.auth.uid == userId ||
@@ -37,7 +37,7 @@ service firebase.storage {
                      request.resource.contentType.matches('audio/.*')
                    );
     }
-    
+
     // Helper functions
     function isExplorationParticipant(userId, explorationId) {
       // Check if the user is a participant in the exploration

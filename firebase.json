@@ -1,1 +1,45 @@
-{"flutter":{"platforms":{"android":{"default":{"projectId":"soultypes-app","appId":"1:201784150710:android:a51b6aa4e0635efaa47417","fileOutput":"android/app/google-services.json"}},"dart":{"lib/firebase_options.dart":{"projectId":"soultypes-app","configurations":{"android":"1:201784150710:android:a51b6aa4e0635efaa47417","ios":"1:201784150710:ios:197b7e443d119a37a47417","web":"1:201784150710:web:8ed7e695a1f53aa6a47417"}}}}}}
+{
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "soultypes-app",
+          "appId": "1:201784150710:android:a51b6aa4e0635efaa47417",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "soultypes-app",
+          "configurations": {
+            "android": "1:201784150710:android:a51b6aa4e0635efaa47417",
+            "ios": "1:201784150710:ios:197b7e443d119a37a47417",
+            "web": "1:201784150710:web:8ed7e695a1f53aa6a47417"
+          }
+        }
+      }
+    }
+  },
+  "firestore": {
+    "rules": "firebase/firestore.rules"
+  },
+  "storage": {
+    "rules": "firebase/storage.rules"
+  },
+  "functions": [
+    {
+      "source": "functions",
+      "codebase": "default",
+      "ignore": [
+        "node_modules",
+        ".git",
+        "firebase-debug.log",
+        "firebase-debug.*.log",
+        "*.local"
+      ],
+      "predeploy": [
+        "npm --prefix \"$RESOURCE_DIR\" run lint"
+      ]
+    }
+  ]
+}

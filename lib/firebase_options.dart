@@ -25,10 +25,7 @@ class DefaultFirebaseOptions {
       case TargetPlatform.iOS:
         return ios;
       case TargetPlatform.macOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for macos - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return macos;
       case TargetPlatform.windows:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for windows - '
@@ -41,7 +38,8 @@ class DefaultFirebaseOptions {
         );
       default:
         throw UnsupportedError(
-          'DefaultFirebaseOptions are not supported for this platform.',
+          'DefaultFirebaseOptions have not been configured for $defaultTargetPlatform - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
         );
     }
   }
@@ -70,6 +68,17 @@ class DefaultFirebaseOptions {
     messagingSenderId: '201784150710',
     projectId: 'soultypes-app',
     storageBucket: 'soultypes-app.firebasestorage.app',
+    iosClientId: '201784150710-6vqjcqc92ttmaf8pq6d6bmne375a1r94.apps.googleusercontent.com',
     iosBundleId: 'com.example.soultypesApp',
+  );
+
+  static const FirebaseOptions macos = FirebaseOptions(
+    apiKey: 'YOUR-MACOS-API-KEY',
+    appId: 'YOUR-MACOS-APP-ID',
+    messagingSenderId: 'YOUR-SENDER-ID',
+    projectId: 'YOUR-PROJECT-ID',
+    storageBucket: 'YOUR-STORAGE-BUCKET',
+    iosClientId: 'YOUR-MACOS-CLIENT-ID',
+    iosBundleId: 'YOUR-MACOS-BUNDLE-ID',
   );
 }

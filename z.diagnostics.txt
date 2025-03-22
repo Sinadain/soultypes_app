@@ -1,0 +1,68 @@
+#################################################
+### Start Time: Fri Mar 21 10:27:21 PM EDT 2025
+#################################################
+#################################################
+### Flutter Analysis
+#################################################
+#################################################
+### Preparing Test Environment
+#################################################
+Puppeteer already installed.
+Test environment prepared.
+#################################################
+### Launching Chrome Test Browser
+#################################################
+Starting Chrome test browser. Please interact with the app to reproduce issues.
+You can press Ctrl+C to end manually.
+
+Starting Puppeteer browser...
+Navigating to http://localhost:8888...
+[debug] Installing/Activating first service worker.
+[debug] Activated new service worker.
+[debug] Injecting <script> tag. Using callback.
+[debug] TrustedTypes available. Creating policy: gis-dart
+[debug] TrustedTypes available. Creating policy: flutterfire-firebase_core
+[debug] Initializing Firebase firebase_core
+[debug] TrustedTypes available. Creating policy: flutterfire-firebase_firestore
+[debug] Initializing Firebase firebase_firestore
+[debug] TrustedTypes available. Creating policy: flutterfire-firebase_functions
+[debug] Initializing Firebase firebase_functions
+[debug] TrustedTypes available. Creating policy: flutterfire-firebase_auth
+[debug] Initializing Firebase firebase_auth
+[debug] TrustedTypes available. Creating policy: flutterfire-firebase_storage
+[debug] Initializing Firebase firebase_storage
+Test browser is ready. Interact with the app to reproduce issues.
+Press Ctrl+C in the terminal when you are done testing.
+[log] [GSI_LOGGER]: Evaluating FedCM mode support.
+[log] [GSI_LOGGER]: FedCM mode supported.
+[info] [GSI_LOGGER-TOKEN_CLIENT]: Instantiated.
+[error] Cross-Origin-Opener-Policy policy would block the window.closed call.
+[error] Cross-Origin-Opener-Policy policy would block the window.closed call.
+[log] Google sign-in error: Exception: Failed to sign in with Google: [firebase_auth/popup-closed-by-user] The popup has been closed by the user before finalizing the operation.
+
+Test timeout reached (10 minutes), saving logs and closing browser...
+Test completed successfully. Data captured to files.
+Browser closed.
+
+#################################################
+### Console Log Analysis
+#################################################
+Console messages recorded:
+[error] Cross-Origin-Opener-Policy policy would block the window.closed call.
+[error] Cross-Origin-Opener-Policy policy would block the window.closed call.
+
+Message count by type:
+     14 [debug]
+      3 [log]
+      2 [error]
+      1 [info]
+#################################################
+### Network Analysis
+#################################################
+Network activity summary:
+Total requests: 362
+Error responses:
+No error responses found.
+#################################################
+### End Time: Fri Mar 21 10:37:39 PM EDT 2025
+#################################################

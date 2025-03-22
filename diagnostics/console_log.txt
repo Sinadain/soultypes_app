@@ -1,0 +1,20 @@
+[debug] Installing/Activating first service worker.
+[debug] Activated new service worker.
+[debug] Injecting <script> tag. Using callback.
+[debug] TrustedTypes available. Creating policy: gis-dart
+[debug] TrustedTypes available. Creating policy: flutterfire-firebase_core
+[debug] Initializing Firebase firebase_core
+[debug] TrustedTypes available. Creating policy: flutterfire-firebase_firestore
+[debug] Initializing Firebase firebase_firestore
+[debug] TrustedTypes available. Creating policy: flutterfire-firebase_functions
+[debug] Initializing Firebase firebase_functions
+[debug] TrustedTypes available. Creating policy: flutterfire-firebase_auth
+[debug] Initializing Firebase firebase_auth
+[debug] TrustedTypes available. Creating policy: flutterfire-firebase_storage
+[debug] Initializing Firebase firebase_storage
+[log] [GSI_LOGGER]: Evaluating FedCM mode support.
+[log] [GSI_LOGGER]: FedCM mode supported.
+[info] [GSI_LOGGER-TOKEN_CLIENT]: Instantiated.
+[error] Cross-Origin-Opener-Policy policy would block the window.closed call.
+[error] Cross-Origin-Opener-Policy policy would block the window.closed call.
+[log] Google sign-in error: Exception: Failed to sign in with Google: [firebase_auth/popup-closed-by-user] The popup has been closed by the user before finalizing the operation.

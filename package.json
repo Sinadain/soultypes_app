@@ -1,0 +1,9 @@
+{
+  "name": "flutter-logs-capture",
+  "version": "1.0.0",
+  "description": "Capture Chrome DevTools logs for Flutter web app",
+  "main": "capture_logs.js",
+  "dependencies": {
+    "chrome-remote-interface": "^0.33.1"
+  }
+} 

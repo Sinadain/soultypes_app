@@ -5,26 +5,26 @@ service cloud.firestore {
     match /{document=**} {
       allow read, write: if false; // Default deny all
     }
-    
+
     // Helper functions
     function isSignedIn() {
       return request.auth != null;
     }
-    
+
     function isOwner(userId) {
       return request.auth.uid == userId;
     }
-    
+
     function isConnectionParticipant(connectionId) {
       let connection = get(/databases/$(database)/documents/connections/$(connectionId)).data;
       return request.auth.uid in connection.users;
     }
-    
+
     function isConversationParticipant(conversationId) {
       let conversation = get(/databases/$(database)/documents/conversations/$(conversationId)).data;
       return request.auth.uid == conversation.user1Id || request.auth.uid == conversation.user2Id;
     }
-    
+
     // User rules
     match /users/{userId} {
       // Users can read their own data, public profiles, or profiles they're connected with
@@ -49,7 +49,7 @@ service cloud.firestore {
         return uid1 < uid2 ? uid1 + '_' + uid2 : uid2 + '_' + uid1;
       }
     }
-    
+
     // Connection rules
     match /connections/{connectionId} {
       // Users can read connections they are part of
@@ -64,7 +64,7 @@ service cloud.firestore {
       // Users can update or delete connections they are part of
       allow update, delete: if isSignedIn() && isConnectionParticipant(connectionId);
     }
-    
+
     // Conversation rules
     match /conversations/{conversationId} {
       // Users can read and write conversations they are part of
@@ -75,7 +75,7 @@ service cloud.firestore {
         allow read, write: if isSignedIn() && isConversationParticipant(conversationId);
       }
     }
-    
+
     // Exploration rules
     match /explorations/{explorationId} {
       // Users can read and manage their explorations
@@ -84,7 +84,7 @@ service cloud.firestore {
         request.resource.data.participants.hasAny([request.auth.uid])
       );
     }
-    
+
     // Exploration Types rules (templates)
     match /explorationTypes/{typeId} {
       // All users can read exploration types
